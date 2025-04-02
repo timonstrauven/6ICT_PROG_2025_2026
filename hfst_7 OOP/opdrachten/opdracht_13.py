@@ -1,4 +1,4 @@
-# Maak een klasse Voertuig & Bus zoals aangegeven in opdracht 12.
+# Maak een klasse Voertuig & Bus zoals aangegeven in opdracht 13.
 
 " Via onderstaande code kan je niveau 1 testen. "
 # voertuig_1 = Voertuig("Mercedes", 6.5, 5)
