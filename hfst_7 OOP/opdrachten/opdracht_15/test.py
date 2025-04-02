@@ -1,98 +1,73 @@
-" Bestand voor het testen van de klassen ontwikkelt in dojo.py. "
+# Dit testbestand is bedoeld om de ontwikkeling van shapes.py te testen. 
+# Het bevat al een paar voorbeelden van dingen om te controleren.
+# Begin met het lezen van README.md
+from vormen import Rechthoek, Vierkant, Ruit
 
-from dojo import Lid, Student, Instructeur, Workshop
+" Testen van klasse Rechthoek "
+# recht = Rechthoek(10, 5)
 
-" Testen van klasse Lid "
-# lid_1 = Lid("Jan Paumen")
-# lid_2 = Lid("Piet verstraten")
-
-# print(lid_1.voorstellen()) # Hey, mijn naam is Jan.
-# print(lid_2.voorstellen()) # Hey, mijn naam is Piet.
-
-
-
-" Testen van klasse Student "
-# student_1 = Student("Jan Paumen", "Lijkt me leuk.")
-# student_2 = Student("Piet verstraten", "Veel verdienen later.")
-
-# print(student_1.interesses)             # []
-# student_1.interesse_toevoegen("C#")     # 
-# student_1.interesse_toevoegen("C#")     # C# is reeds een interesse van Jan.
-# student_1.interesse_toevoegen("HTML")   #
-# print(student_1.interesses)             # ['C#', 'HTML']
-# student_1.interesse_verwijderen("Java") # Java is geen een interesse van Jan.
-# student_1.interesse_verwijderen("HTML") #
-# print(student_1.interesses)             # ['C#']
-
-# student_2.beschrijving()                # Veel verdienen later.
+# # Oppervlakte berekenen & hoogte wijzigen.
+# print(recht.get_oppervlakte())                      # 50  
+# recht.set_hoogte(3)                                 #
+# print(recht.get_oppervlakte())                      # 30  
 
 
-
-" Testen van klasse Instructeur "
-# instruct_1 = Instructeur("Joris Doemen", "Ik wil mensen leren programmeren.")
-# instruct_2 = Instructeur("Korneel Vern", "Ik programmeer reeds 20 jaar en zou graag mijn ervaring delen.")
-
-# print(instruct_1.skills)                 # []
-# instruct_1.skill_toevoegen("HTML")       #
-# instruct_1.skill_toevoegen("HTML")       # HTML is reeds een skill van Joris.
-# instruct_1.skill_toevoegen("CSS")        #
-# instruct_1.skill_toevoegen("Javascript") #
-# print(instruct_1.skills)                 # ['HTML', 'CSS', 'Javascript']
-
-# instruct_2.beschrijving()                # Ik programmeer reeds 20 jaar en zou graag mijn ervaring delen.
-
-
-
-" Testen van klasse Workshop "
-# workshop = Workshop("12/03/2024", "HTML")
-
-# student_1 = Student("Jan Paumen", "Lijkt me leuk.")
-# student_1.interesse_toevoegen("HTML")
-# student_1.interesse_toevoegen("Python")
-# student_2 = Student("Piet verstraten", "Veel verdienen later.")
-# student_2.interesse_toevoegen("HTML")
-
-# instruct_1 = Instructeur("Joris Doemen", "Ik wil mensen leren programmeren.")
-# instruct_1.skill_toevoegen("HTML")
-# instruct_1.skill_toevoegen("Python")
-# instruct_2 = Instructeur("Korneel Vern", "Ik programmeer reeds 20 jaar en zou graag mijn ervaring delen.")
-# instruct_2.skill_toevoegen("Python")
-
-
-# workshop.deelnemer_toevoegen(student_1)  #
-# workshop.deelnemer_toevoegen(student_2)  #
-# workshop.deelnemer_toevoegen(instruct_1) #
-# workshop.deelnemer_toevoegen(instruct_2) # Korneel heeft geen skill om deze workshop te geven.
-
-# workshop.info()
-# """
-# Workshop - 12/03/2024 - HTML
-
-# Totaal aantal deelnemers: 3
-
-# Studenten:
-# 1. Jan Paumen - HTML,Python
-# 2. Piet verstraten - HTML
-
-# Instructeurs:
-# 1. Joris Doemen - HTML,Python
+# # Hoe ziet deze rechthoek er uit?
+# print(f"Rechthoek: {recht.breedte}x{recht.hoogte}") # Rechthoek: 10x3
+# print(recht.afbeelding())
+# """ --> 3 regels (=hoogte), met iedere regel 10 asterisken (=breedte)
+# **********
+# **********
+# **********
 # """
 
-# print("######################")
+# # Hoevaak past een rechthoek van 4x3 in bovenstaande rechthoek?
+# andere_recht = Rechthoek(4,3) 
+# print(recht.get_hoeveel_binnen(andere_recht))       # 2
 
 
-# student_1.interesse_verwijderen("HTML") 
-# workshop.update()
-# workshop.info() # MERK OP! Jan is geen student meer na update.
-#                 # Dit omdat hij geen interesse meer heeft in HTML.
+" Testen van klasse Vierkant "
+# vierk = Vierkant(9)
+
+# # Oppervlakte berekenen & zijde wijzigen.
+# print(vierk.get_oppervlakte()) # 81
+# vierk.set_zijde(5)             #
+# print(vierk.get_oppervlakte()) # 25
+# vierk.set_breedte(4)           #
+# print(vierk.get_oppervlakte()) # 16
+
+# # Hoe ziet het vierkant er uit?
+# print(f"Vierkant: {vierk.breedte}x{vierk.hoogte}") # Vierkant: 4x4
+# vierk.afbeelding()
+# """ --> 4 regels (=hoogte), met iedere regel 4 asterisken (=breedte)
+# ****
+# ****
+# ****
+# ****
 # """
-# Workshop - 12/03/2024 - HTML
 
-# Totaal aantal deelnemers: 2
+# # Hoevaak past een rechthoek van 4x3 in bovenstaand vierkant
+# andere_recht = Rechthoek(4,3) 
+# print(vierk.get_hoeveel_binnen(andere_recht))       # 1
 
-# Studenten:  
-# 1. Piet verstraten - HTML 
 
-# Instructeurs:
-# 1. Joris Doemen - HTML,Python
+" Testen van klasse Ruit "
+# ruit = Ruit(5,9)
+
+# # Oppervlakte berekenen & get_hoeveel_binnen proberen.
+# ruit.get_oppervlakte()    # 22.5
+# ruit.get_hoeveel_binnen() # Deze methode is niet beschikbaar voor ruiten.
+
+# # Hoe ziet de ruit er uit?
+# ruit.afbeelding()
+# """ --> 9 regels (=hoogte), met 5 asterisken in het midden (=breedte)
+#   *
+#   *
+#  ***
+#  ***
+# *****
+#  ***
+#  ***
+#   *
+#   *
 # """

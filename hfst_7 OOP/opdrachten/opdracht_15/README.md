@@ -1,79 +1,102 @@
 ## Opdracht 15
-Je begint je eigen coder dojo! In dit project zul je object georiënteerd programmeren gebruiken om een `Lid`, `Student`, `Instructeur` en `Workshop` klasse te maken in **dojo.py**. De `Student` en `Instructeur` klasse moeten een kind zijn van de klasse `Lid`. In het bestand **test.py** zijn testen te vinden om de correcte werking van iedere klasse na te gaan.
+Vervolledig de klassen `Rechthoek` en `Vierkant` in het bestand `vormen.py`. De klasse `Rechthoek` is hierbij een ouder van `Vierkant`. In het bestand **test.py** zijn testen te vinden om de correcte werking van iedere klasse na te gaan. Indien je opdracht 13 gemaakt hebt, kan je onderdelen van de code hieruit copy-pasten voor deze opdracht.
 
-### Lid klasse
-Er komen twee soorten mensen langs bij Codebar. Degene die workshops willen volgen (`Student`) en zij die ze willen geven (`Instructeur`). Deze twee klassen hebben echter een hoop gemeen. Maak daarom een klasse `Lid` aan waarvan `Student` & `Instructeur` zullen erven.
+### Rechthoek klasse
+Bij het aanmaken van een object van `Rechthoek`, moet deze als eigenschappen `breedte` en `hoogte` hebben. De klasse bevat de volgende methoden.
+* `set_breedte`: wijzig de `breedte` naar de meegegeven waarde.
+* `set_hoogte`: wijzig de `hoogte` naar de meegegeven waarde.
+* `get_oppervlakte`: return (niet print!) de oppervlakte van de rechthoek.
+* `get_omtrek`: return (niet print!) de omtrek van de rechthoek.
+* `afbeelding`: print (niet return!) een string met de vorm van de rechthoek gebruik makend van asterisken (*). Het aantal regels van de string is gelijk aan de `hoogte` van de rechthoek. De hoeveelheid asterisken op iedere regel is gelijk aan de `breedte` van de rechthoek (zie ook voorbeeld beneden).
+* `get_hoeveel_binnen`: geef een tweede rechthoek mee aan deze methode. De methode returnt (niet print!) hoeveel keer de tweede rechthoek past in de eerste (zonder te roteren). Als voorbeeld, een rechthoek van breedte 4 en hoogte 3 past twee maal in een rechthoek van breedte 8 en hoogte 4 (zie ook voorbeeld beneden). 
 
-Een object van `Lid` moet worden aangemaakt met als enige waarde de volledige naam. Deze wordt in de klasse opgesplitst naar de eigenschappen `voornaam` en `achternaam` De klasse moet hiernaast de volgende methoden bevatten.
-* `voorstellen`: geeft een string terug met een introductie (VB. "Hey, mijn naam is Marc!").
-* `beschrijving`: deze functie moet None teruggeven (wordt gebruikt in de Student en Instructeur klassen).
+### Voorbeeld Rechthoek
+```py
+recht = Rechthoek(10, 5)
 
-```
-Test de werking door de code onder "Testen van klasse Lid" uit commentaar te halen. Zet deze na het testen terug in commentaar.
-```
+# Oppervlakte berekenen & hoogte wijzigen.
+print(recht.get_oppervlakte())                      # 50  
+recht.set_hoogte(3)                                 #
+print(recht.get_oppervlakte())                      # 30  
 
-### Student klasse 
-`Student` is een kind van de klasse `Lid`, en neemt dus alle eigenschappen en methoden van deze klasse over.
 
-Een `Student` heeft twee extra eigenschappen.
-* `reden`: waarom persoon naar de dojo komt (VB. "Ik heb altijd al websites willen maken!"). 
-* `interesses`: een lijst met wat de persoon interesseert (VB. ["C#", "Java", "Javascript"]). De lijst begint altijd leeg.
+# Hoe ziet deze rechthoek er uit?
+print(f"Rechthoek: {recht.breedte}x{recht.hoogte}") # Rechthoek: 10x3
+print(recht.afbeelding())
+""" --> 3 regels (=hoogte), met iedere regel 10 asterisken (=breedte)
+**********
+**********
+**********
+"""
 
-Een `Student` heeft ook twee extra methoden.
-* `interesse_toevoegen`: voeg een interesse toe aan de lijst met `interesses`. Als de interesse reeds in de lijst staat, voeg je deze niet opnieuw toe. Print in dit geval dat de interesse reeds aanwezig is.
-* `interesse_verwijderen`: verwijder een interesse uit de lijst met `interesses`. Als de opgegeven interesse niet in de lijst staat, print dan dat de student hier nooit interesse in had.
-
-Overschrijf tenslotte de methode `beschrijving` uit de klasse `Lid`. Oproepen van de methode print de `reden` die de persoon heeft om deel te nemen.
-
-```
-Test de werking door de code onder "Testen van klasse Student" uit commentaar te halen. Zet deze na het testen terug in commentaar.
-```
-
-### Instructeur klasse
-`Instructeur` is een kind van de klasse `Lid`, en neemt dus alle eigenschappen en methoden van deze klasse over.
-
-Een `Instructeur` heeft twee extra eigenschappen.
-* `bio`: een korte besschrijving van hun ervaring (VB. "Ik ben een professionele website-ontwikkelaar!").
-* `skills`: een lijst met de vaardigheden die de persoon kent (VB. ["C#", "Python", "Javascript"]). Deze lijst begint altijd leeg. 
-
-Een `Instructeur` heeft ook een extra methode.
-* `skill_toevoegen`: voeg een skill toe aan de lijst met `skills`. Als de skill reeds in de lijst staat, voeg je deze niet opnieuw toe. Print in dit geval dat de skill reeds aanwezig is.
-
-Overschrijf tenslotte de methode `beschrijving` uit de klasse `Lid`. Oproepen van de methode print de `bio` van de persoon.
-
-```
-Test de werking door de code onder "Testen van klasse Student" uit commentaar te halen. Zet deze na het testen terug in commentaar.
+# Hoevaak past een rechthoek van 4x3 in bovenstaande rechthoek?
+andere_recht = Rechthoek(4,3) 
+print(recht.get_hoeveel_binnen(andere_recht))       # 2
 ```
 
-### Workshop klasse
+### Vierkant klasse
+De klasse `Vierkant` is een kind van `Rechthoek`. Bij het aanmaken van een object van `Vierkant` mag de gebruiker `breedte` & `hoogte` niet meer apart ingeven. In plaats hiervan krijgen deze eigenschappen hun waarde van een gezamenlijke parameter (bijvoorbeeld zijde). 
 
-Je dojo bestaat uit workshops. Iedere workshop heeft volgende eigenschappen:
-* `datum`: wanneer workshop plaatsvindt.
-* `onderwerp`: onderwerp van de workshop.
-* Een lijst met `instructeurs`. Begint leeg.
-* Een lijst met `studenten`. Begint leeg.
+Maak ook een extra methode `set_zijde`. De `breedte` & `hoogte` van het vierkant moeten gelijk gesteld worden aan de meegegeven waarde. Bijkomend moet het gebruiken van `set_breedte`/`set_hoogte` zowel de `breedte` als `hoogte` veranderen naar de meegegeven waarde.
 
-Hiernaast heeft de dojo 3 methoden.
-* `deelnemer_toevoegen`: geef aan deze methode een object van `Student` of `Instructeur` mee. Het voegt het object vervolgens toe aan de overeenkomstige lijst (`instructeurs` of `studenten`). Dit gebeurt echter enkel als het `onderwerp` in de workshop overeenkomt met de `interesses` of `skills` van deze persoon. Indien dit niet het geval is, print de methode een bericht dat aangeeft dat de persoon niet geinteresseerd is. Een persoon kan zich ook maar eenmaal voor een workshop inschrijven. Indien deze nogmaals ingeschreven wordt, print dan dat dit niet mogelijk is.
-* `update`: verwijder `Studenten` en `Instructeurs` uit de workshop als hun `interesses` of `skills` niet langer overeenkomen met het `onderwerp` van de workshop.
-* `info`: print de algemene info van de workshop. Voor een voorbeeld zie **Voorbeeld info**.
+### Voorbeeld Vierkant
+```py
+vierk = Vierkant(9)
 
+# Oppervlakte berekenen & zijde wijzigen.
+print(vierk.get_oppervlakte()) # 81
+vierk.set_zijde(5)             #
+print(vierk.get_oppervlakte()) # 25
+vierk.set_breedte(4)           #
+print(vierk.get_oppervlakte()) # 16
+
+# Hoe ziet het vierkant er uit?
+print(f"Vierkant: {vierk.breedte}x{vierk.hoogte}") # Vierkant: 4x4
+vierk.afbeelding()
+""" --> 4 regels (=hoogte), met iedere regel 4 asterisken (=breedte)
+****
+****
+****
+****
+"""
+
+# Hoevaak past een rechthoek van 4x3 in bovenstaand vierkant
+andere_recht = Rechthoek(4,3) 
+print(vierk.get_hoeveel_binnen(andere_recht))       # 1
 ```
-Test de werking door de code onder "Testen van klasse Workshop" uit commentaar te halen.
+
+### Extra: Ruit klasse
+Maak een nieuwe klasse `Ruit`. Deze klasse is een kind van `Rechthoek`. Bij het aanmaken van een object, worden nog steeds `breedte` en `hoogte` als eigenschappen aangemaakt. De breedte slaat op de afstand tussen de twee zij-punten. De hoogte op de afstand tussen het bovenste en onderste punt (zie **afbeelding**).
+
+<p align="center">
+  <img src="diamond.png" width="200" height="300"/>
+</p>
+
+De methode `get_hoeveel_binnen` vervalt. Het oproepen van deze methode met een object van `Ruit` print: "Deze methode is niet beschikbaar voor ruiten." .
+
+De methoden `get_oppervlakte`, `get_omtrek` en `afbeelding` blijven bestaan in `Ruit`. Deze moeten echter wel gewijzigd worden om te werken met de vorm van een ruit. De methode `afbeelding` zal niet voor iedere vorm een perfecte ruit kunnen printen. Het is voldoende als deze op het hoogste en laagste punt een asterisk is, en in het midden een aantal asterisken gelijk aan de breedte. 
+
+
+
+#### Voorbeeld Ruit
+```py
+ruit = Ruit(5,9)
+
+# Oppervlakte berekenen & get_hoeveel_binnen proberen.
+ruit.get_oppervlakte()    # 22.5
+ruit.get_hoeveel_binnen() # Deze methode is niet beschikbaar voor ruiten.
+
+# Hoe ziet de ruit er uit?
+ruit.afbeelding()
+""" --> 9 regels (=hoogte), met 5 asterisken in het midden (=breedte)
+  *
+  *
+ ***
+ ***
+*****
+ ***
+ ***
+  *
+  *
+"""
 ```
-
-### Voorbeeld info
-```
-Workshop - 12/03/2024 - HTML
-
-Totaal aantal deelnemers: 4
-
-Studenten
- 1. Jane Doe - Python, HTML
- 2. Lena Smith - HTML, C#
-
-Instructors
- 1. Vicky Ruby - HTML, JavaScript
- 2. Nicole McMillan - HTML, Cobal
-```
-
