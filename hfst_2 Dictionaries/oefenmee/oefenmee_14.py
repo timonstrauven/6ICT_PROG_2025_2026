@@ -23,3 +23,4 @@ spelinfo = {
         }
     }
 }
+print(spelinfo)

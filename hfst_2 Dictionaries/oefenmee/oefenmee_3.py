@@ -4,3 +4,4 @@ persoonsinfo = { # info over een persoon
     "leeftijd": 32,
     "massa": 79
 }
+naam = persoonsinfo["naam"]
