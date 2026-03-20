@@ -1,1 +1,1 @@
-# Maak een klasse Speler & Spel zoals aangegeven in opdracht 10.
+# Maak een klasse Speler & Spel zoals aangegeven in opdracht 12.
