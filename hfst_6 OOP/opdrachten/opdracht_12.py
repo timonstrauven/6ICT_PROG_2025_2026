@@ -1,3 +1,1 @@
-"""
-Vul dit bestand aan met de instructies in OneNote.
-"""
+# Maak een klasse Speler & Spel zoals aangegeven in opdracht 10.
